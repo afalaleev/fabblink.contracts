@@ -147,8 +147,8 @@ void hub::placeorder(
     auto vtr = vendors.find(vendor_info::primary_key());
     eosio::check(vendors.end() != vtr, "Vendor doesn't exist");
 
-    auto designers = designer_table(_self, _self.value);
-    auto etr = designers.find(dtr->designer.value);
+    auto designers = designer_table(_self, dtr->designer.value);
+    auto etr = designers.find(designer_info::primary_key());
     eosio::check(designers.end() != etr, "Designer doesn't exist");
 
     orders.emplace(consumer, [&](auto& itm){
